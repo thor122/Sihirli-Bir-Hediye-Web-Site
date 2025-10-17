@@ -1,0 +1,623 @@
+/* Genel Sıfırlama ve Tema Ayarları */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', serif;
+    overflow-x: hidden; 
+}
+
+/* Splash Ekranı Stili (LUMOS) */
+.splash-screen {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #000000; display: flex;
+    justify-content: center; align-items: center; z-index: 100;
+    transition: opacity 0.5s ease-out; 
+    will-change: opacity, transform; 
+}
+
+.lumos-button {
+    background: none; border: 2px solid #ffffff; color: #ffffff; 
+    font-size: clamp(20px, 3vw, 30px); 
+    padding: 2vw 4vw; 
+    cursor: pointer;
+    text-transform: uppercase; letter-spacing: 5px;
+    transition: all 0.3s ease; border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); opacity: 1; 
+}
+
+.lumos-glow-effect { animation: lumosGlow 1.2s ease-out forwards; }
+
+@-webkit-keyframes lumosGlow {
+    0% { background-color: #000000; }
+    30% { background-color: #ffffff; } 
+    100% { background-color: #000000; }
+}
+@keyframes lumosGlow {
+    0% { background-color: #000000; }
+    30% { background-color: #ffffff; } 
+    100% { background-color: #000000; }
+}
+
+/* Ana İçerik Stili (index.html) */
+#mainContent {
+    display: none; width: 100%; min-height: 100vh; 
+    background-image: url('Koridor.jpeg'); 
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat; color: #ffd700; 
+    display: flex; flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    will-change: transform; 
+    background-attachment: fixed; 
+}
+
+.start-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90%; 
+    margin: 0 auto; 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.65); 
+    border-radius: 10px;
+}
+
+.hp-sevgili-img {
+    width: 90vw; 
+    max-width: 400px; 
+    height: auto;
+    border: 5px solid #ffd700; 
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); 
+    margin-bottom: 40px;
+    object-fit: cover;
+    display: block; 
+}
+
+.start-button {
+    font-size: clamp(1.5em, 4vw, 2.5em); 
+    padding: 15px 50px;
+    border: 3px solid #ffffff;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.start-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffd700; 
+    box-shadow: 0 0 10px #ffd700;
+}
+
+/* MOBİL CİHAZLAR İÇİN EKSTRA AYARLAR */
+@media (max-width: 768px) {
+    .lumos-button {
+        font-size: clamp(25px, 5vw, 40px); 
+        padding: 4vw 8vw;
+        letter-spacing: 3px;
+    }
+
+    #mainContent {
+        padding-top: 5vh; 
+        justify-content: flex-start; 
+        background-attachment: scroll; 
+    }
+}
+
+/* EXPULSO PATLAMA EFEKTİ */
+.expulso-blast {
+    animation: expulso 0.6s ease-out forwards; 
+    transform-origin: center center; 
+    will-change: transform, opacity; 
+}
+
+@-webkit-keyframes expulso {
+    0% { -webkit-transform: scale(1); opacity: 1; }
+    50% {
+        color: #ff4500; 
+        -webkit-transform: scale(1.5) rotate(5deg); 
+        opacity: 0.8;
+        filter: brightness(2); 
+    }
+    100% {
+        -webkit-transform: scale(0) translate(100px, 100px); 
+        opacity: 0;
+        visibility: hidden; 
+    }
+}
+@keyframes expulso {
+    0% { transform: scale(1); opacity: 1; }
+    50% {
+        color: #ff4500; 
+        transform: scale(1.5) rotate(5deg); 
+        opacity: 0.8;
+        filter: brightness(2); 
+    }
+    100% {
+        transform: scale(0) translate(100px, 100px); 
+        opacity: 0;
+        visibility: hidden; 
+    }
+}
+
+/* ========== SECOND PAGE STYLES (Tour Page) ========== */
+body.tour-page { 
+    overflow-y: auto; 
+    overflow-x: hidden;
+    background-color: #0d1117; 
+    color: #ffd700; 
+    text-align: center; 
+    
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+/* YENİ STİL: Görseli tasarladığınız boyutlara göre keserek tam ekrana sığdırır */
+.fullscreen-image {
+    width: 100vw;       /* Tarayıcı penceresi genişliği */
+    height: 100vh;      /* Tarayıcı penceresi yüksekliği */
+    object-fit: cover;  /* En boy oranını koruyarak KESEREK sığdır */
+    position: fixed;    /* Görselin arka planda sabit kalmasını sağlar */
+    top: 0;
+    left: 0;
+    z-index: -1;        /* Diğer içeriklerin altında kalmasını sağlar */
+}
+
+
+.galeri-kapsayici {
+    display: grid;
+    /* 2 eşit genişlikte sütun oluşturur */
+    grid-template-columns: 1fr 1fr;
+    /* Dikey ve yatay tüm kutucuklar arasına 40px boşluk ekler */
+    gap: 40px; 
+    /* Sayfada ortalamak için (İsteğe bağlı) */
+    max-width: 900px; /* Ya da istediğin genişlik */
+    margin-right: 1200px ; 
+    margin-top: 1200px; 
+}
+
+
+.first-road-content,
+.first-road-content2,
+.first-road-content3,
+.first-road-content4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%; 
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.65); 
+    border-radius: 10px;
+}
+
+
+.quidditch-img,
+.laboratuvar-img,
+.süpürgeUçuş-img,
+.atÜstünde-img {
+    width: 100%; 
+    max-width: 300px; 
+    height: 300px;
+    border: 5px solid #ffd700; 
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); 
+    /* Görsel altındaki linkten ayırmak için boşluk */
+    margin-bottom: 20px; 
+    object-fit: cover;
+    display: block;
+}
+
+
+.first-road-content a,
+.first-road-content2 a,
+.first-road-content3 a,
+.first-road-content4 a {
+    width: 100%; /* Tüm kutucuk genişliğini kaplasın */
+    padding-top: 10px;
+    border-top: 1px solid #ffd700; /* Görselden ayıran ince çizgi */
+    color: #ffd700;
+    font-size: 80px;
+    text-decoration: none; /* Alt çizgiyi kaldırır */
+    text-align: center;
+}
+
+/* Görseli Tam Ekran Arka Plan Olarak Ayarlama */
+.background-image-fr {
+    /* Görseli tüm ekranı kaplayacak şekilde sabitleme */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Görseli bozmadan tüm alanı doldurma ve arkaya gönderme */
+    object-fit: cover;
+    z-index: -1;
+    /* Diğer kendi stillerim */
+    color: #ffd700; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    will-change: transform; 
+    background-attachment: fixed;
+}
+
+/* Sayfa Ayarları: Metinlerin konumlanması için referans noktası */
+body {
+    position: relative; /* h1 ve p absolute konumlandırma için referans */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Koyu temalı arka plan rengi */
+    background-color: #0d1a2f; 
+}
+
+/* mektup-kapsayici sınıfını kullanmadığım için bu kısmı kaldırıyorum */
+/* .mektup-kapsayici { ... } */
+
+
+/* Başlık (h1) Stili ve Konumu: Parşömenin üzerine oturtma */
+.first-road-dear {
+    position: absolute;
+    /* Konumu ekranın dikey ve yatay merkezine yakın ayarlama */
+    top: 47%; 
+    right: 55%; 
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 120px;
+    color: #93610a; 
+    font-weight: normal; 
+    line-height: 1.2;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+/* Paragraf (p) Stili ve Konumu: Başlığın hemen altı */
+.toDarling {
+    position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 61%; 
+    left: 32%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.startColoms{
+     position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 50%; 
+    right: 18%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Görseli Tam Ekran Arka Plan Olarak Ayarlama */
+.background-image-sr {
+    /* Görseli tüm ekranı kaplayacak şekilde sabitleme */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Görseli bozmadan tüm alanı doldurma ve arkaya gönderme */
+    object-fit: cover;
+    z-index: -1;
+    /* Diğer kendi stillerim */
+    color: #ffd700; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    will-change: transform; 
+    background-attachment: fixed;
+}
+
+/* Sayfa Ayarları: Metinlerin konumlanması için referans noktası */
+body {
+    position: relative; /* h1 ve p absolute konumlandırma için referans */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Koyu temalı arka plan rengi */
+    background-color: #0d1a2f; 
+}
+
+/* mektup-kapsayici sınıfını kullanmadığım için bu kısmı kaldırıyorum */
+/* .mektup-kapsayici { ... } */
+
+
+/* Başlık (h1) Stili ve Konumu: Parşömenin üzerine oturtma */
+.second-road-dear {
+    position: absolute;
+    /* Konumu ekranın dikey ve yatay merkezine yakın ayarlama */
+    top: 46%; 
+    right: 57%; 
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 120px;
+    color: #93610a; 
+    font-weight: normal; 
+    line-height: 1.2;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+/* Paragraf (p) Stili ve Konumu: Başlığın hemen altı */
+.toDarling2 {
+    position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 63%; 
+    left: 34%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.startColoms2{
+     position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 49%; 
+    right: 21%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Görseli Tam Ekran Arka Plan Olarak Ayarlama */
+.background-image-tr {
+    /* Görseli tüm ekranı kaplayacak şekilde sabitleme */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Görseli bozmadan tüm alanı doldurma ve arkaya gönderme */
+    object-fit: cover;
+    z-index: -1;
+    /* Diğer kendi stillerim */
+    color: #ffd700; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    will-change: transform; 
+    background-attachment: fixed;
+}
+
+/* Sayfa Ayarları: Metinlerin konumlanması için referans noktası */
+body {
+    position: relative; /* h1 ve p absolute konumlandırma için referans */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Koyu temalı arka plan rengi */
+    background-color: #0d1a2f; 
+}
+
+/* mektup-kapsayici sınıfını kullanmadığım için bu kısmı kaldırıyorum */
+/* .mektup-kapsayici { ... } */
+
+
+/* Başlık (h1) Stili ve Konumu: Parşömenin üzerine oturtma */
+.third-road-dear {
+    position: absolute;
+    /* Konumu ekranın dikey ve yatay merkezine yakın ayarlama */
+    top: 46%; 
+    right: 57%; 
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 120px;
+    color: #93610a; 
+    font-weight: normal; 
+    line-height: 1.2;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+/* Paragraf (p) Stili ve Konumu: Başlığın hemen altı */
+.toDarling3{
+    position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 64%; 
+    left: 32%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 55px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.startColoms3{
+     position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 49.5%; 
+    left: 34%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Görseli Tam Ekran Arka Plan Olarak Ayarlama */
+.background-image-ftr {
+    /* Görseli tüm ekranı kaplayacak şekilde sabitleme */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Görseli bozmadan tüm alanı doldurma ve arkaya gönderme */
+    object-fit: cover;
+    z-index: -1;
+    /* Diğer kendi stillerim */
+    color: #ffd700; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    will-change: transform; 
+    background-attachment: fixed;
+}
+
+/* Sayfa Ayarları: Metinlerin konumlanması için referans noktası */
+body {
+    position: relative; /* h1 ve p absolute konumlandırma için referans */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* Koyu temalı arka plan rengi */
+    background-color: #0d1a2f; 
+}
+
+/* mektup-kapsayici sınıfını kullanmadığım için bu kısmı kaldırıyorum */
+/* .mektup-kapsayici { ... } */
+
+
+/* Başlık (h1) Stili ve Konumu: Parşömenin üzerine oturtma */
+.fourth-road-dear {
+    position: absolute;
+    /* Konumu ekranın dikey ve yatay merkezine yakın ayarlama */
+    top: 46%; 
+    right: 57%; 
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 120px;
+    color: #93610a; 
+    font-weight: normal; 
+    line-height: 1.2;
+    padding: 10px;
+    box-sizing: border-box;
+    
+}
+
+/* Paragraf (p) Stili ve Konumu: Başlığın hemen altı */
+.toDarling4 {
+    position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 63%; 
+    left: 34%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.startColoms4{
+     position: absolute;
+    /* Başlığın altına gelmesi için dikey konumu ayarlama */
+    top: 49.5%; 
+    left: 34%;
+    /* Öğeyi kendi merkezine göre kaydırarak hassas konumlandırma */
+    transform: translate(-50%, -50%); 
+    
+    /* Font ve renk ayarları */
+    font-family: 'IM Fell English SC', serif;
+    font-size: 65px;
+    color: #4a3e2a;
+    font-weight: normal; 
+    line-height: 1.5;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
